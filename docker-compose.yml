@@ -1,0 +1,34 @@
+version: "3"
+services:
+  web:
+    container_name: web
+    build: docker
+    command: "sbt ~run"
+    ports:
+      - 9000:9000
+    volumes:
+      - /Users/sota/Develop/todo:/var/app/todo
+      - ./tmp/.ivy2:/root/.ivy2
+      - ./tmp/.sbt:/root/.sbt
+    networks:
+      - docker_todo_default
+    depends_on: # webはdbに依存する（起動順）
+      - db
+
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ""
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    networks:
+      - docker_todo_default
+
+volumes:
+  db-data:
+    external: true
+networks:
+  docker_todo_default:
+    external: true
