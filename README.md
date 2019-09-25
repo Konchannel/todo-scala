@@ -14,11 +14,12 @@ git clone https://github.com/Konchannel/todo-scala.git
 ## how to use
 curlコマンドでタスクの操作を行います。  
 登録するタスクのフォーマットは以下です。  
-* id(任意)	タスクに振られた番号です。指定が無ければDBが自動で割り振ります
-* title		タスクのタイトルです。
-* deadline(任意)	締め切りを指定します。
-* progress(任意)	タスクの状態を指定します。Doing,Done,Invalidなど指定できます
-* memo(任意)	そのタスクにメモをつけることができます。  
+
+| id(任意)|タスクに振られた番号です。指定が無ければDBが自動で割り振ります|  
+| title|タスクのタイトルです。|  
+| deadline(任意)|締め切りを指定します。|  
+| progress(任意)|タスクの状態を指定します。Doing,Done,Invalidなど指定できます|  
+| memo(任意)|そのタスクにメモをつけることができます。|  
 
 使用例  
 `	
