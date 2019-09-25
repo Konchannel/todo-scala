@@ -1,15 +1,19 @@
 # todo-scala
 
 ## what's todo-scala
-todo-scalaはタスク管理アプリです。  
+todo-scalaはタスク管理アプリのためのAPIです。
 scala,postgreSQL,Play Framework,Dockerの練習用に作成しました。  
 
-## installing
+## How to run your local
 ```
-cd ~/Desktop
-mkdir todo-scala && cd $_
-git clone https://github.com/Konchannel/todo-scala.git
+docker-compose up -d
 ```  
+
+```
+
+TODO: DBの初期化処理を書く or evolutionsなどに対応する
+
+```
 
 ## how to use
 curlコマンドでタスクの操作を行います。  
