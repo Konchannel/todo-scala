@@ -11,7 +11,10 @@ docker-compose up -d
 
 ```
 
-TODO: DBの初期化処理を書く or evolutionsなどに対応する
+TODO: DBの初期化処理を書く or evolutionsなどに対応する  
+
+CREATE DATABASE todo;
+CREATE TABLE Tasks (id SMALLSERIAL,title VARCHAR(256) NOT NULL,deadline DATE,progress VARCHAR(16),memo TEXT,PRIMARY KEY(id));
 
 ```
 
@@ -56,4 +59,4 @@ curl -w '\n' http://localhost:9000/todo/tasks/delete/9
 ```
 
 
-:ebi:
+\:shrimp:
