@@ -14,11 +14,11 @@ git clone https://github.com/Konchannel/todo-scala.git
 ## how to use
 curlコマンドでタスクの操作を行います。  
 登録するタスクのフォーマットは以下です。  
-*id(任意)	タスクに振られた番号です。指定が無ければDBが自動で割り振ります
-*title		タスクのタイトルです。
-*deadline(任意)	締め切りを指定します。
-*progress(任意)	タスクの状態を指定します。Doing,Done,Invalidなど指定できます
-*memo(任意)	そのタスクにメモをつけることができます。  
+* id(任意)	タスクに振られた番号です。指定が無ければDBが自動で割り振ります
+* title		タスクのタイトルです。
+* deadline(任意)	締め切りを指定します。
+* progress(任意)	タスクの状態を指定します。Doing,Done,Invalidなど指定できます
+* memo(任意)	そのタスクにメモをつけることができます。  
 
 使用例  
 `	
@@ -26,23 +26,23 @@ curlコマンドでタスクの操作を行います。
 `    
 以下curlコマンドの例  
 
-### タスクの全件取得
+#### タスクの全件取得
 ```
 curl -w '\n' http://localhost:9000/todo/tasks
 ```
-### タスクの1件取得
+#### タスクの1件取得
 ```
 curl -w '¥n' -X POST 'http://localhost:9000/todo/tasks'  -H "Content-Type:application/json" -d '{"title":"be master of todo-scala","memo":"Just do it"}'
 ```
-### タスク1件を登録
+#### タスク1件を登録
 ```
 curl -w '\n' http://localhost:9000/todo/tasks/1
 ```
-### タスク1件を更新
+#### タスク1件を更新
 ```
 curl -w '\n' -X PUT 'http://localhost:9000/todo/tasks/update' -H "Content-Type:application/json" -d '{"id":3,"title":"make todo task app","deadline":"2019-08-31","memo":"Try first"}'
 ```
-### タスク1件を削除
+#### タスク1件を削除
 ```
 curl -w '\n' http://localhost:9000/todo/tasks/delete/9
 ```
