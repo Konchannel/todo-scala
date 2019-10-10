@@ -1,8 +1,8 @@
 # todo-scala
 
-## what's todo-scala
-todo-scalaはタスク管理アプリのためのAPIです。
-scala,postgreSQL,Play Framework,Dockerの練習用に作成しました。  
+## What's todo-scala
+todo-scala is an API for task management apps. 
+Created for scala, postgreSQL, Play Framework, Docker practice. 
 
 ## How to run your local
 ```
@@ -11,49 +11,49 @@ docker-compose up -d
 
 ```
 
-TODO: DBの初期化処理を書く or evolutionsなどに対応する  
+TODO: Write DB initialization processing OR support evolutions etc.  
 
 CREATE DATABASE todo;
 CREATE TABLE Tasks (id SMALLSERIAL,title VARCHAR(256) NOT NULL,deadline DATE,progress VARCHAR(16),memo TEXT,PRIMARY KEY(id));
 
 ```
 
-## how to use
-curlコマンドでタスクの操作を行います。  
-登録するタスクのフォーマットは以下です。  
+## How to use
+The task is operated with the curl command.
+The format of the task to register is as follows.  
 
-| キー値 | 詳細 | 
+| Key Value | Details | 
 |---|---|
-| id(任意) |  タスクに振られた番号です。指定が無ければDBが自動で割り振ります  |  
-| title | タスクのタイトルです。 |  
-|  deadline(任意) | 締め切りを指定します。 |  
-| progress(任意) | タスクの状態を指定します。Doing,Done,Invalidなど指定できます |  
-| memo(任意) | そのタスクにメモをつけることができます。 |  
+| id(any) |  Number assigned to the task. If not specified, DB will automatically allocate. |  
+| title | The title of the task. |  
+|  deadline(any) | Specify the deadline. |  
+| progress(any) | Specify the task status. You can specify Doing, Done, Invalid, etc. |  
+| memo(any) | You can write a memo on the task. |  
 
-#### 使用例  
+#### Example of use  
 `	
-{"title":"たいとる","deadline":2099-01-01,"memo":"めも"}
+{"title":"hogehoge","deadline":2099-01-01,"memo":"fugafuga"}
 `      
 
-### 以下curlコマンドの例  
+### Example of curl command 
 
-#### タスクの全件取得
+#### Get all tasks
 ```
 curl -w '\n' http://localhost:9000/todo/tasks
 ```
-#### タスクの1件取得
+#### Get one task
 ```
 curl -w '¥n' -X POST 'http://localhost:9000/todo/tasks'  -H "Content-Type:application/json" -d '{"title":"be master of todo-scala","memo":"Just do it"}'
 ```
-#### タスク1件を登録
+#### Register one task
 ```
 curl -w '\n' http://localhost:9000/todo/tasks/1
 ```
-#### タスク1件を更新
+#### Update one task
 ```
 curl -w '\n' -X PUT 'http://localhost:9000/todo/tasks/update' -H "Content-Type:application/json" -d '{"id":3,"title":"make todo task app","deadline":"2019-08-31","memo":"Try first"}'
 ```
-#### タスク1件を削除
+#### Delete one task
 ```
 curl -w '\n' http://localhost:9000/todo/tasks/delete/9
 ```
