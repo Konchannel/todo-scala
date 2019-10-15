@@ -6,5 +6,6 @@ target
 /.project
 /.settings
 /RUNNING_PID
+/db-data
 .DS_Store
 .g8

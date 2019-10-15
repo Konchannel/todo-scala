@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="io.jsonwebtoken"
+		module="jjwt"
+		revision="0.9.1"
+		status="release"
+		publication="20180705225143"
+	>
+		<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0" />
+		<description homepage="https://github.com/jwtk/jjwt" />
+		<m:properties__groovy.version>2.4.11</m:properties__groovy.version>
+		<m:properties__bouncycastle.version>1.56</m:properties__bouncycastle.version>
+		<m:properties__maven.compiler.version>3.6.1</m:properties__maven.compiler.version>
+		<m:properties__powermock.version>2.0.0-beta.5</m:properties__powermock.version>
+		<m:properties__project.build.sourceEncoding>UTF-8</m:properties__project.build.sourceEncoding>
+		<m:properties__junit.version>4.12</m:properties__junit.version>
+		<m:properties__failsafe.plugin.version>2.20.1</m:properties__failsafe.plugin.version>
+		<m:properties__easymock.version>3.5</m:properties__easymock.version>
+		<m:properties__jackson.version>2.9.6</m:properties__jackson.version>
+		<m:properties__logback.version>1.2.3</m:properties__logback.version>
+		<m:properties__jdk.version>1.7</m:properties__jdk.version>
+		<m:properties__clover.version>4.2.0</m:properties__clover.version>
+		<m:properties__buildNumber>${user.name}-${maven.build.timestamp}</m:properties__buildNumber>
+		<m:properties__surefire.plugin.version>2.20.1</m:properties__surefire.plugin.version>
+		<m:properties__maven.jar.version>3.0.2</m:properties__maven.jar.version>
+		<e:sbtTransformHash>fddcc574794a951acd6fadd1d41bf15ebb2a6681</e:sbtTransformHash>
+		<m:properties__sonatypeOssDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</m:properties__sonatypeOssDistMgmtSnapshotsUrl>
+		<m:maven.plugins>org.apache.maven.plugins__maven-enforcer-plugin__1.0|org.apache.maven.plugins__maven-enforcer-plugin__1.0|org.apache.maven.plugins__maven-enforcer-plugin__1.4.1|org.apache.maven.plugins__maven-compiler-plugin__3.6.1|org.apache.maven.plugins__maven-jar-plugin__3.0.2|org.codehaus.gmaven__gmaven-plugin__1.5|org.apache.maven.plugins__maven-surefire-plugin__2.20.1|org.apache.maven.plugins__maven-failsafe-plugin__2.20.1|org.openclover__clover-maven-plugin__4.2.0|org.apache.maven.plugins__maven-release-plugin__2.5.3|org.apache.felix__maven-bundle-plugin__3.3.0|org.jwtk.coveralls__coveralls-maven-plugin__4.4.0|org.apache.maven.plugins__maven-javadoc-plugin__2.10.4</m:maven.plugins>
+	</info>
+	<configurations>
+		<conf name="default" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime,master"/>
+		<conf name="master" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies"/>
+		<conf name="compile" visibility="public" description="this is the default scope, used if none is specified. Compile dependencies are available in all classpaths."/>
+		<conf name="provided" visibility="public" description="this is much like compile, but indicates you expect the JDK or a container to provide it. It is only available on the compilation classpath, and is not transitive."/>
+		<conf name="runtime" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="compile"/>
+		<conf name="test" visibility="private" description="this scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases." extends="runtime"/>
+		<conf name="system" visibility="public" description="this scope is similar to provided except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository."/>
+		<conf name="sources" visibility="public" description="this configuration contains the source artifact of this module, if any."/>
+		<conf name="javadoc" visibility="public" description="this configuration contains the javadoc artifact of this module, if any."/>
+		<conf name="optional" visibility="public" description="contains all optional dependencies"/>
+	</configurations>
+	<publications>
+		<artifact name="jjwt" type="jar" ext="jar" conf="master"/>
+	</publications>
+	<dependencies>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.9.6" force="true" conf="compile->compile(*),master(compile);runtime->runtime(*)"/>
+		<dependency org="org.bouncycastle" name="bcprov-jdk15on" rev="1.56" force="true" conf="optional->compile(*),master(compile)"/>
+		<dependency org="com.google.android" name="android" rev="4.1.1.4" force="true" conf="provided->compile(*),provided(*),runtime(*),master(compile)">
+			<exclude org="commons-logging" module="commons-logging" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="ch.qos.logback" name="logback-classic" rev="1.2.3" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.codehaus.groovy" name="groovy-all" rev="2.4.11" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.easymock" name="easymock" rev="3.5" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.powermock" name="powermock-module-junit4" rev="2.0.0-beta.5" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.powermock" name="powermock-api-easymock" rev="2.0.0-beta.5" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="org.powermock" name="powermock-core" rev="2.0.0-beta.5" force="true" conf="test->runtime(*),master(compile)"/>
+		<dependency org="junit" name="junit" rev="4.12" force="true" conf="test->runtime(*),master(compile)"/>
+	</dependencies>
+</ivy-module>

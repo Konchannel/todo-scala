@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="org.codehaus.mojo"
+		module="animal-sniffer-parent"
+		revision="1.17"
+		status="release"
+		publication="20180622011929"
+	>
+		<license name="MIT license" url="http://www.opensource.org/licenses/mit-license.php" />
+		<description homepage="http://www.mojohaus.org/animal-sniffer">
+		Animal Sniffer Parent POM.
+		</description>
+		<m:dependency.management__junit__junit__version>4.12</m:dependency.management__junit__junit__version>
+		<m:properties__project.reporting.outputEncoding>UTF-8</m:properties__project.reporting.outputEncoding>
+		<m:properties__scmpublish.content>target/staging/animal-sniffer-parent</m:properties__scmpublish.content>
+		<m:properties__invoker.streamLogs>false</m:properties__invoker.streamLogs>
+		<m:dependency.management__org.ow2.asm__asm__version>6.2</m:dependency.management__org.ow2.asm__asm__version>
+		<m:properties__mojo.java.target>1.7</m:properties__mojo.java.target>
+		<m:properties__localCheckout>true</m:properties__localCheckout>
+		<m:properties__project.build.sourceEncoding>UTF-8</m:properties__project.build.sourceEncoding>
+		<m:properties__maven-javadoc-plugin.version>2.10.4</m:properties__maven-javadoc-plugin.version>
+		<m:properties__netbeans.checkstyle.format>true</m:properties__netbeans.checkstyle.format>
+		<m:dependency.management__org.apache.maven__maven-plugin-api__version>3.0</m:dependency.management__org.apache.maven__maven-plugin-api__version>
+		<m:properties__maven.version>2.2.1</m:properties__maven.version>
+		<m:properties__maven-project-info-reports-plugin.version>2.9</m:properties__maven-project-info-reports-plugin.version>
+		<m:dependency.management__org.apache.maven.plugin-tools__maven-plugin-annotations__version>3.4</m:dependency.management__org.apache.maven.plugin-tools__maven-plugin-annotations__version>
+		<m:properties__maven-changes-plugin.version>2.11</m:properties__maven-changes-plugin.version>
+		<e:sbtTransformHash>0904ee68fee19e8b379d6f51b5224bf8638d05e9</e:sbtTransformHash>
+		<m:properties__sitePluginVersion>3.3</m:properties__sitePluginVersion>
+		<m:properties__maven-checkstyle-plugin.version>2.16</m:properties__maven-checkstyle-plugin.version>
+		<m:properties__mojo.javadoc.mavenVersion>${project.prerequisites.maven}</m:properties__mojo.javadoc.mavenVersion>
+		<m:maven.plugins>org.apache.maven.plugins__maven-checkstyle-plugin__null|org.apache.maven.plugins__maven-enforcer-plugin__null|org.apache.maven.plugins__maven-checkstyle-plugin__null|org.apache.maven.plugins__maven-enforcer-plugin__null</m:maven.plugins>
+		<m:properties__build-helper.version>1.7</m:properties__build-helper.version>
+		<m:properties__surefire.redirectTestOutputToFile>true</m:properties__surefire.redirectTestOutputToFile>
+		<m:dependency.management__junit__junit__scope>test</m:dependency.management__junit__junit__scope>
+	</info>
+	<configurations>
+		<conf name="default" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime,master"/>
+		<conf name="master" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies"/>
+		<conf name="compile" visibility="public" description="this is the default scope, used if none is specified. Compile dependencies are available in all classpaths."/>
+		<conf name="provided" visibility="public" description="this is much like compile, but indicates you expect the JDK or a container to provide it. It is only available on the compilation classpath, and is not transitive."/>
+		<conf name="runtime" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="compile"/>
+		<conf name="test" visibility="private" description="this scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases." extends="runtime"/>
+		<conf name="system" visibility="public" description="this scope is similar to provided except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository."/>
+		<conf name="sources" visibility="public" description="this configuration contains the source artifact of this module, if any."/>
+		<conf name="javadoc" visibility="public" description="this configuration contains the javadoc artifact of this module, if any."/>
+		<conf name="optional" visibility="public" description="contains all optional dependencies"/>
+	</configurations>
+	<publications>
+	</publications>
+</ivy-module>
